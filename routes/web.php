@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PDFController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -11,3 +12,7 @@ Route::get('/', function () {
     Auth::logout();
     return view('welcome');
 });
+
+Route::get("pdf", [PDFController::class,'index']);
+
+Route::post("pdf", [PDFController::class,'store'])->name('pdf.store');
